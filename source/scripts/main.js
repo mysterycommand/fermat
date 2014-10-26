@@ -21,30 +21,30 @@ function onLoad(/*event*/) {
 
     var sqrt5 = Math.sqrt(5);
     var phi = (1 + sqrt5) / 2;
-    var π = Math.pi;
+    var ƒ = 1 / (phi * phi);
+    var π = Math.PI;
     var ππ = π * 2;
+    var g = ππ * ƒ;
 
     var last = 0;
     var dt;
 
-    function diamond(hw, x, y) {
+    function diamond(cx, cy, hw) {
         var hh = hw * 2;
-        var h = hh * 2;
 
         ctx.save();
+        ctx.translate(cx, cy);
 
-        ctx.translate(x, y);
-
-        ctx.lineWidth = 5;
+        ctx.lineWidth = hw / 2;
         ctx.strokeStyle = hex();
         ctx.fillStyle = hex();
 
         ctx.beginPath();
-        ctx.moveTo(0, 0);
-        ctx.lineTo(-hw, -hh);
-        ctx.lineTo(0, -h);
-        ctx.lineTo(hw, -hh);
-        ctx.lineTo(0, 0);
+        ctx.moveTo(0, hh);
+        ctx.lineTo(-hw, 0);
+        ctx.lineTo(0, -hh);
+        ctx.lineTo(hw, 0);
+        ctx.lineTo(0, hh);
         ctx.closePath();
 
         ctx.stroke();
@@ -53,11 +53,44 @@ function onLoad(/*event*/) {
         ctx.restore();
     }
 
+    function spiral(cx, cy, scale, numFlorets) {
+        var hs = scale / 2;
+
+        var r;
+        var theta;
+        var sqrtI;
+        var dhw;
+
+        ctx.save();
+        ctx.translate(cx, cy);
+
+        for (var i = 1; i < numFlorets; ++i) {
+            sqrtI = Math.sqrt(i);
+            r = scale * sqrtI;
+            theta = i * g;
+
+            ctx.save();
+            ctx.rotate(theta);
+            ctx.translate(0, r);
+
+            dhw = hs - (hs / sqrtI); // Math.min((i / 5) * 6, 6);
+            diamond(0, -dhw, dhw);
+            ctx.restore();
+        }
+
+        ctx.restore();
+    }
+
     function init() {
         ctx.fillStyle = hex();
         ctx.fillRect(p, p, canvas.width - pp, canvas.height - pp);
 
-        diamond(12, hw, hh);
+        ctx.save();
+        ctx.translate(hw, hh);
+
+        spiral(0, 0, 10, 1500);
+
+        ctx.restore();
 
         console.log(canvas.width, canvas.height);
         console.log(ctx);
