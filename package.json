@@ -1,0 +1,29 @@
+{
+  "name": "fermat",
+  "version": "1.0.0",
+  "description": "Drawing spirals.",
+  "scripts": {
+    "start": "gulp serve",
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mysterycommand/fermat.git"
+  },
+  "keywords": [
+    "canvas",
+    "drawing",
+    "spirals"
+  ],
+  "author": {
+    "name": "Matt Hayes",
+    "email": "matt@mysterycommand.com",
+    "url": "http://mysterycommand.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mysterycommand/fermat/issues"
+  },
+  "homepage": "https://github.com/mysterycommand/fermat",
+  "devDependencies": {}
+}
