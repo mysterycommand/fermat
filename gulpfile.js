@@ -21,4 +21,6 @@ var gulp = require('gulp');
     './gulp/custom'
 ]));
 
-gulp.task('default', ['jshint']);
+gulp.task('test', ['jshint', 'mocha']);
+
+gulp.task('default', ['test']);
