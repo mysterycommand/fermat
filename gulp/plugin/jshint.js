@@ -9,6 +9,6 @@ gulp.task('jshint', function() {
             './source/**/*.js',
             './test/**/*.js'
         ])
-        .pipe(jshint('.jshintrc'))
+        .pipe(jshint('./.jshintrc'))
         .pipe(jshint.reporter('jshint-stylish'));
 });
