@@ -24,8 +24,8 @@ var gulp = require('gulp');
 gulp.task('test', ['jshint', 'mocha']);
 gulp.task('build', ['clean', 'test', 'ruby-sass', 'scripts']);
 gulp.task('serve', ['build', 'browser-sync'], function() {
-    gulp.watch('./source/styles/**/*.scss', ['ruby-sass']);
     gulp.watch('./source/scripts/**/*.js', ['scripts']);
+    gulp.watch('./source/styles/**/*.scss', ['ruby-sass']);
     gulp.watch('./static/index.html', ['reload']);
 });
 

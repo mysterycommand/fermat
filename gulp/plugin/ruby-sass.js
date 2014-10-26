@@ -2,8 +2,8 @@
 
 var gulp = require('gulp');
 var sass = require('gulp-ruby-sass');
-
 var filter = require('gulp-filter');
+
 var sync = require('browser-sync');
 
 gulp.task('ruby-sass', function() {

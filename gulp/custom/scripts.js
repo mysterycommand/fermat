@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 
+var sync = require('browser-sync');
 var browserify = require('browserify');
 var stream = require('vinyl-source-stream');
 
@@ -11,5 +12,6 @@ gulp.task('scripts', function() {
         })
         .bundle()
         .pipe(stream('main.js'))
-        .pipe(gulp.dest('./build/js'));
+        .pipe(gulp.dest('./build/js'))
+        .pipe(sync.reload({ stream: true }));
 });
