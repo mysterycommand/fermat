@@ -26,6 +26,7 @@
   },
   "homepage": "https://github.com/mysterycommand/fermat",
   "devDependencies": {
+    "browser-sync": "^1.6.0",
     "chai": "^1.9.2",
     "gulp": "^3.8.9",
     "gulp-jshint": "^1.8.5",

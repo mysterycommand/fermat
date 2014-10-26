@@ -22,5 +22,9 @@ var gulp = require('gulp');
 ]));
 
 gulp.task('test', ['jshint', 'mocha']);
+gulp.task('build', ['test']);
+gulp.task('serve', ['build', 'browser-sync'], function() {
+    gulp.watch('./static/index.html', ['reload']);
+});
 
-gulp.task('default', ['test']);
+gulp.task('default', ['serve']);
