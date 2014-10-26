@@ -25,5 +25,9 @@
     "url": "https://github.com/mysterycommand/fermat/issues"
   },
   "homepage": "https://github.com/mysterycommand/fermat",
-  "devDependencies": {}
+  "devDependencies": {
+    "gulp": "^3.8.9",
+    "gulp-jshint": "^1.8.5",
+    "jshint-stylish": "^1.0.0"
+  }
 }
