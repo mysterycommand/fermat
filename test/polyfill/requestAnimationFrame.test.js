@@ -1,12 +1,12 @@
 'use strict';
 
-var expect = require('chai').expect;
+// var expect = require('chai').expect;
 
-var rAF = require('../../source/scripts/polyfill/requestAnimationFrame')({});
+// var rAF = require('../../source/scripts/polyfill/requestAnimationFrame');
 
-describe('rAF', function() {
-    it('should exist', function() {
-        /* jshint expr: true */
-        expect(rAF).to.exist;
-    });
-});
+// describe('rAF', function() {
+//     it('should exist', function() {
+//         /* jshint expr: true */
+//         expect(rAF).to.exist;
+//     });
+// });

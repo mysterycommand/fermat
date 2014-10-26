@@ -1,5 +1,17 @@
 @import 'colors';
 
+html,
+body,
+main {
+    height: 100%;
+}
+
 body {
     color: $copy;
+    margin: 0;
+}
+
+canvas {
+    height: 100%;
+    width: 100%;
 }

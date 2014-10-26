@@ -1,15 +1,18 @@
 'use strict';
 
-var now = require('./polyfill/Date.now');
-var rAF = require('./polyfill/requestAnimationFrame')(window);
+var rAF = require('./polyfill/requestAnimationFrame');
 
-function onLoad(event) {
-    console.log(now(), event);
+function onLoad(/*event*/) {
+
+    var main = document.getElementById('main');
+    var canvas = document.getElementById('canvas');
+    // var ctx = canvas.getContext('2d');
+
+    console.log(main);
+    console.log(canvas.width, canvas.height);
 
     var last = 0;
-
     rAF(function loop(time) {
-        // console.log(time - last);
         last = time;
         rAF(loop);
     });
