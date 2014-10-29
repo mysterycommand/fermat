@@ -10,6 +10,7 @@ main {
 body {
     color: $copy;
     font-family: $bodyFontFamily;
+    font-size: 100%;
     font-weight: 300;
     margin: 0;
 }
@@ -23,7 +24,7 @@ canvas {
     width: 100%;
 }
 
-div {
+form {
     background: rgba(255, 255, 255, 0.5);
     max-width: percentage(2 / 3);
     padding: 8px 12px 12px 8px;
@@ -36,9 +37,5 @@ div {
 button {
     background: transparent;
     border: none;
-    color: $dark;
-    font-size: 16px;
-    font-weight: bold;
     padding: 0;
-    text-decoration: underline;
 }

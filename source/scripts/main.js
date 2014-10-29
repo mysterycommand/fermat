@@ -1,6 +1,6 @@
 'use strict';
 
-// var rAF = require('./polyfill/requestAnimationFrame');
+// var rAF = require('./fallback/window.requestAnimationFrame');
 var rgba = require('./util/random').rgba;
 var toRad = require('./util/toRadians');
 
