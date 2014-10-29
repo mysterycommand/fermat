@@ -1,15 +1,14 @@
 'use strict';
 
 // var rAF = require('./polyfill/requestAnimationFrame');
-var rgba = require('./util/randomRgba');
+var rgba = require('./util/random').rgba;
 var toRad = require('./util/toRadians');
 
 function onLoad(/*event*/) {
 
     var main = document.getElementById('main');
     var canvas = document.getElementById('canvas');
-    // var button = document.getElementById('button');
-    var petalImg;
+    var button = document.getElementById('button');
 
     var ctx = canvas.getContext('2d');
 
@@ -101,16 +100,6 @@ function onLoad(/*event*/) {
         ctx.restore();
     }
 
-    function petal(cx, cy, hw) {
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(π);
-
-        ctx.drawImage(petalImg, -hw, 0, hw * 2, hw * 2);
-
-        ctx.restore();
-    }
-
     function spiral(cx, cy, angle, scale, numFlorets) {
         var hs = scale / 2;
         // var op = randomOp();
@@ -135,8 +124,7 @@ function onLoad(/*event*/) {
             ctx.translate(0, r);
 
             dhw = hs - ((hs / sqrtI) * 0.25); // Math.min((i / 5) * 6, 6);
-            // diamond(0, -(dhw * 0.25), dhw);
-            petal(0, 0, 100);
+            diamond(0, -(dhw * 0.25), dhw);
 
             ctx.restore();
             ctx.fill();
@@ -152,11 +140,10 @@ function onLoad(/*event*/) {
         ctx.save();
         ctx.translate(hw, hh);
 
-        spiral(0, 0, (toRad(deg) * 1), 150, 20);
-        // spiral(0, 0, (toRad(deg) * 1), 125, 500);
-        // spiral(0, 0, (toRad(deg) * 5), 50, 1500);
-        // spiral(0, 0, (toRad(deg) * 10), 25, 2500);
-        // spiral(0, 0, (toRad(deg) * 25), 5, 6000);
+        spiral(0, 0, (toRad(deg) * 1), 125, 500);
+        spiral(0, 0, (toRad(deg) * 5), 50, 1500);
+        spiral(0, 0, (toRad(deg) * 10), 25, 2500);
+        spiral(0, 0, (toRad(deg) * 25), 5, 30000);
 
         ctx.restore();
 
@@ -167,31 +154,21 @@ function onLoad(/*event*/) {
         // ].join(''));
     }
 
-    // function onClickMain(event) {
-    //     /* jshint bitwise: false */
-    //     event.preventDefault();
-    //     draw((Math.random() * 360)|0);
-    // }
-
-    // function onClickButton(event) {
-    //     event.preventDefault();
-    //     event.stopPropagation();
-
-    // }
-
-    function onLoadImage(/*event*/) {
+    function onClickMain(event) {
         /* jshint bitwise: false */
-        petalImg = this; // jshint ignore: line
+        event.preventDefault();
         draw((Math.random() * 360)|0);
     }
 
-    function init() {
-        var img = document.createElement('img');
-        img.addEventListener('load', onLoadImage);
-        img.src = './img/petal.png';
+    function onClickButton(event) {
+        event.preventDefault();
+        event.stopPropagation();
 
-        // main.addEventListener('click', onClickMain);
-        // button.addEventListener('click', onClickButton);
+    }
+
+    function init() {
+        main.addEventListener('click', onClickMain);
+        button.addEventListener('click', onClickButton);
     }
 
     // function loop(now) {
