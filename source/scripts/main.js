@@ -8,7 +8,6 @@ function onLoad(/*event*/) {
 
     var main = document.getElementById('main');
     var canvas = document.getElementById('canvas');
-    var button = document.getElementById('button');
 
     var ctx = canvas.getContext('2d');
 
@@ -17,6 +16,7 @@ function onLoad(/*event*/) {
 
     var hw = w / 2;
     var hh = h / 2;
+    var d = Math.sqrt((hw * hw) + (hh * hh));
 
     var p = 0;
     var pp = p * 2;
@@ -100,22 +100,24 @@ function onLoad(/*event*/) {
         ctx.restore();
     }
 
-    function spiral(cx, cy, angle, scale, numFlorets) {
+    function spiral(cx, cy, angle, scale, numFlorets, maxR) {
         var hs = scale / 2;
         // var op = randomOp();
 
-        var r;
+        var r = 0;
         var theta;
         var sqrtI;
         var dhw;
+
+        var i = 0;
 
         ctx.save();
         ctx.translate(cx, cy);
         ctx.fillStyle = grad(0, 0);
         // ctx.globalCompositeOperation = op;
 
-        for (var i = 0; i < numFlorets; ++i) {
-            sqrtI = Math.sqrt((i * 0.5));
+        while (i < numFlorets && r < maxR) {
+            sqrtI = Math.sqrt(i);
             r = scale * sqrtI;
             theta = angle + i * g;
 
@@ -125,6 +127,8 @@ function onLoad(/*event*/) {
 
             dhw = hs - ((hs / sqrtI) * 0.25); // Math.min((i / 5) * 6, 6);
             diamond(0, -(dhw * 0.25), dhw);
+
+            ++i;
 
             ctx.restore();
             ctx.fill();
@@ -140,10 +144,10 @@ function onLoad(/*event*/) {
         ctx.save();
         ctx.translate(hw, hh);
 
-        spiral(0, 0, (toRad(deg) * 1), 125, 500);
-        spiral(0, 0, (toRad(deg) * 5), 50, 1500);
-        spiral(0, 0, (toRad(deg) * 10), 25, 2500);
-        spiral(0, 0, (toRad(deg) * 25), 5, 30000);
+        spiral(0, 0, (toRad(deg) * 1), 125, Infinity, d);
+        spiral(0, 0, (toRad(deg) * 5), 50, Infinity, d);
+        spiral(0, 0, (toRad(deg) * 10), 25, Infinity, d);
+        spiral(0, 0, (toRad(deg) * 25), 5, Infinity, d);
 
         ctx.restore();
 
@@ -160,15 +164,8 @@ function onLoad(/*event*/) {
         draw((Math.random() * 360)|0);
     }
 
-    function onClickButton(event) {
-        event.preventDefault();
-        event.stopPropagation();
-
-    }
-
     function init() {
         main.addEventListener('click', onClickMain);
-        button.addEventListener('click', onClickButton);
     }
 
     // function loop(now) {
