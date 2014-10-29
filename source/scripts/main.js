@@ -1,5 +1,9 @@
 'use strict';
 
+require('./polyfill/Function.prototype.name');
+require('./polyfill/window.requestAnimationFrame');
+require('./polyfill/window.cancelAnimationFrame');
+
 var rgba = require('./util/random').rgba;
 var toRad = require('./util/toRadians');
 

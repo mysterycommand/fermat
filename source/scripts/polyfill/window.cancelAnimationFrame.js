@@ -6,24 +6,22 @@
  * @version 1.0.0
  * @see  Paul Irish's Gist: https://gist.github.com/paulirish/1579671
  */
-/* ================================================================================================================== */
+/** ================================================================================================================ **/
 
 'use strict';
 
 require('./Date.now');
 
 (function() {
-    var w = window || {};
-
     ['webkit', 'moz'].forEach(function(vendorPrefix) {
         /* jshint laxbreak: true */
-        w.cancelAnimationFrame = w[vendorPrefix + 'CancelAnimationFrame']
-            || w[vendorPrefix + 'CancelRequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendorPrefix + 'CancelAnimationFrame']
+            || window[vendorPrefix + 'CancelRequestAnimationFrame'];
     });
 
-    if (!! w.cancelAnimationFrame) { return; }
+    if (!! window.cancelAnimationFrame) { return; }
 
-    w.cancelAnimationFrame = function cancelAnimationFrame(id) {
+    window.cancelAnimationFrame = function cancelAnimationFrame(id) {
         clearTimeout(id);
     };
 })();
