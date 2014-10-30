@@ -22,8 +22,8 @@ var slice = require('./slice');
  */
 module.exports = function assign() {
     var sources = slice.call(arguments)
-        .filter(function(src) {
-            return (!! src); // filter out falsey (null) sources
+        .filter(function(source) {
+            return (!! source); // filter out falsey (null) sources
         });
 
     if (sources.length === 0) { return {}; }
