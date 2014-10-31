@@ -4,6 +4,8 @@ require('./polyfill/Function.prototype.name');
 require('./polyfill/window.requestAnimationFrame');
 require('./polyfill/window.cancelAnimationFrame');
 
+// var rAF = window.requestAnimationFrame;
+
 var rgba = require('./util/random').rgba;
 var toRad = require('./util/toRadians');
 
@@ -167,10 +169,6 @@ function onLoad(/*event*/) {
         draw((Math.random() * 360)|0);
     }
 
-    function init() {
-        main.addEventListener('click', onClickMain);
-    }
-
     // function loop(now) {
     //     /* jshint bitwise: false, expr: true */
     //     dt = now - (time || now);
@@ -184,8 +182,14 @@ function onLoad(/*event*/) {
     //     rAF(loop);
     // }
 
+    function init() {
+        /* jshint bitwise: false */
+        main.addEventListener('click', onClickMain);
+        draw((Math.random() * 360)|0);
+        // rAF(loop);
+    }
+
     init();
-    // rAF(loop);
 }
 
 window.addEventListener('load', onLoad);
