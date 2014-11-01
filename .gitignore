@@ -28,6 +28,7 @@ node_modules
 .lock-wscript
 
 .DS_Store
-node_modules
+.idea
 .sass-cache
 build
+node_modules
