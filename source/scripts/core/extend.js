@@ -9,8 +9,8 @@
 
 'use strict';
 
-var assignDescriptors = require('./assignDescriptors');
-var getDescriptors = require('./getDescriptors');
+var assignDescriptors = require('../util/descriptors/assignDescriptors');
+var getDescriptors = require('../util/descriptors/getDescriptors');
 
 /**
  * Takes a constructor function, a hash of static properties, and a prototype function that returns an object who's

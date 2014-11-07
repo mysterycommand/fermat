@@ -105,7 +105,7 @@ module.exports = extend(Object, {
          */
         define: function() {
             if (! arguments.length) { return this; }
-            var descriptors = assignDescriptors.apply(null, arguments);
+            var descriptors = assignDescriptors(arguments);
             return Object.defineProperties(this, descriptors);
         },
 
