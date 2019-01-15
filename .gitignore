@@ -32,3 +32,6 @@ node_modules
 .sass-cache
 build
 node_modules
+
+.cache/
+dist/
