@@ -1,27 +1,26 @@
-'use strict';
+"use strict";
 
-require('./polyfill/Function.prototype.name');
-require('./polyfill/window.requestAnimationFrame');
-require('./polyfill/window.cancelAnimationFrame');
+require("./polyfill/Function.prototype.name");
+require("./polyfill/window.requestAnimationFrame");
+require("./polyfill/window.cancelAnimationFrame");
 
 // var rAF = window.requestAnimationFrame;
 
-var rgba = require('./util/random').rgba;
-var toRad = require('./util/toRadians');
+var rgba = require("./util/random").rgba;
+var toRad = require("./util/toRadians");
 
 function onLoad(/*event*/) {
+    var main = document.getElementById("main");
+    var canvas = document.getElementById("canvas");
 
-    var main = document.getElementById('main');
-    var canvas = document.getElementById('canvas');
+    var ctx = canvas.getContext("2d");
 
-    var ctx = canvas.getContext('2d');
-
-    var w = canvas.width = main.offsetWidth; // 1920; //
-    var h = canvas.height = main.offsetHeight; // 1080; //
+    var w = (canvas.width = main.offsetWidth); // 1920; //
+    var h = (canvas.height = main.offsetHeight); // 1080; //
 
     var hw = w / 2;
     var hh = h / 2;
-    var d = Math.sqrt((hw * hw) + (hh * hh));
+    var d = Math.sqrt(hw * hw + hh * hh);
 
     var p = 0;
     var pp = p * 2;
@@ -74,7 +73,7 @@ function onLoad(/*event*/) {
     // }
 
     function grad(cx, cy) {
-        var gr = Math.sqrt((hw * hw) + (hh * hh));
+        var gr = Math.sqrt(hw * hw + hh * hh);
         var gradient = ctx.createRadialGradient(cx, cy, gr, cx, cy, 0);
         gradient.addColorStop(0, rgba());
         gradient.addColorStop(1, rgba());
@@ -130,7 +129,7 @@ function onLoad(/*event*/) {
             ctx.rotate(theta);
             ctx.translate(0, r);
 
-            dhw = hs - ((hs / sqrtI) * 0.25); // Math.min((i / 5) * 6, 6);
+            dhw = hs - (hs / sqrtI) * 0.25; // Math.min((i / 5) * 6, 6);
             diamond(0, -(dhw * 0.25), dhw);
 
             ++i;
@@ -149,10 +148,10 @@ function onLoad(/*event*/) {
         ctx.save();
         ctx.translate(hw, hh);
 
-        spiral(0, 0, (toRad(deg) * 1), 125, Infinity, d);
-        spiral(0, 0, (toRad(deg) * 5), 50, Infinity, d);
-        spiral(0, 0, (toRad(deg) * 10), 25, Infinity, d);
-        spiral(0, 0, (toRad(deg) * 25), 5, Infinity, d);
+        spiral(0, 0, toRad(deg) * 1, 125, Infinity, d);
+        spiral(0, 0, toRad(deg) * 5, 50, Infinity, d);
+        spiral(0, 0, toRad(deg) * 10, 25, Infinity, d);
+        spiral(0, 0, toRad(deg) * 25, 5, Infinity, d);
 
         ctx.restore();
 
@@ -166,7 +165,7 @@ function onLoad(/*event*/) {
     function onClickMain(event) {
         /* jshint bitwise: false */
         event.preventDefault();
-        draw((Math.random() * 360)|0);
+        draw((Math.random() * 360) | 0);
     }
 
     // function loop(now) {
@@ -184,12 +183,12 @@ function onLoad(/*event*/) {
 
     function init() {
         /* jshint bitwise: false */
-        main.addEventListener('click', onClickMain);
-        draw((Math.random() * 360)|0);
+        main.addEventListener("click", onClickMain);
+        draw((Math.random() * 360) | 0);
         // rAF(loop);
     }
 
     init();
 }
 
-window.addEventListener('load', onLoad);
+window.addEventListener("load", onLoad);
