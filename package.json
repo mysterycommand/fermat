@@ -7,7 +7,7 @@
     "reset": "yarn clean node_modules/ && yarn install",
     "start": "parcel static/index.html",
     "build": "parcel build static/index.html --public-url /fermat --experimental-scope-hoisting",
-    "deploy": "gh-pages -d dist/ -m \"Updates - `date +\"%D %T\"`\"",
+    "deploy": "gh-pages -d dist/ -m \"Updates - `date +\"%D %T\"`\" --git \"`which git`\"",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
