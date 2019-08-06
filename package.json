@@ -4,6 +4,7 @@
   "description": "Drawing spirals.",
   "scripts": {
     "start": "parcel static/index.html",
+    "build": "parcel build static/index.html --public-url /fermat --experimental-scope-hoisting",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
