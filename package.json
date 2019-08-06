@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "Drawing spirals.",
   "scripts": {
+    "clean": "rm -rf .cache/ coverage/ dist/",
+    "reset": "yarn clean node_modules/ && yarn install",
     "start": "parcel static/index.html",
+    "build": "parcel build static/index.html --public-url /fermat --experimental-scope-hoisting",
+    "deploy": "gh-pages -d dist/ -m \"Updates - `date +\"%D %T\"`\" --git \"`which git`\"",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
@@ -26,7 +30,8 @@
   },
   "homepage": "https://github.com/mysterycommand/fermat",
   "devDependencies": {
-    "parcel-bundler": "1.11.0",
-    "sass": "1.16.0"
+    "gh-pages": "2.1.0",
+    "parcel-bundler": "1.12.3",
+    "sass": "1.22.9"
   }
 }
