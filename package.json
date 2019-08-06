@@ -7,6 +7,7 @@
     "reset": "yarn clean node_modules/ && yarn install",
     "start": "parcel static/index.html",
     "build": "parcel build static/index.html --public-url /fermat --experimental-scope-hoisting",
+    "deploy": "gh-pages -d dist/ -m \"Updates - `date +\"%D %T\"`\"",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
   "repository": {
@@ -29,6 +30,7 @@
   },
   "homepage": "https://github.com/mysterycommand/fermat",
   "devDependencies": {
+    "gh-pages": "2.1.0",
     "parcel-bundler": "1.12.3",
     "sass": "1.22.9"
   }
